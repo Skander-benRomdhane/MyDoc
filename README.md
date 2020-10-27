@@ -8,3 +8,4 @@ Application name : MyDoc
 -as a patient I can choose way of payment 
 -as a doctor also I can create an account but after the submission the admin needs to verify 
 -as a doctor I can check my appointments  and approve them or cancel them if it’s canceled i need to provide a message to the patient with the reason else upon the submission of the appointment I need to pay a fee to the site -->
+Hello
