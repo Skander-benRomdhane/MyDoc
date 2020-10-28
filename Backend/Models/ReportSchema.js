@@ -1,15 +1,15 @@
 const { Model, Sequelize } = require('sequelize');
 const sequelize = require('../database/index.js')
-class Patients extends Model {}
-Patients.init({
+class Reports extends Model {}
+Reports.init({
+  patienId:Sequelize.STRING,
   name: Sequelize.STRING,
-  password: Sequelize.STRING,
   email: Sequelize.STRING,
   address : Sequelize.STRING ,
   city : Sequelize.STRING ,
   phoneNumber : Sequelize.STRING ,
-  accountBanc: Sequelize.STRING ,
-}, { sequelize , modelName: 'patients' });
-
-module.exports = Patients ;
-
+  sex : Sequelize.STRING,
+  bloodtype : Sequelize.STRING,
+  primaryDiagnosis : Sequelize.STRING,
+}, { sequelize , modelName: 'reports' });
+module.exports = Reports ;

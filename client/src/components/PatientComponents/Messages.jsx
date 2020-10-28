@@ -10,7 +10,7 @@ class Messages extends Component {
     render() {
         return (
             <div>
-                
+              <p>messsages</p>  
             </div>
         );
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ConfirmAppoinment extends Component {
+class BookAnAppointment extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,10 +10,10 @@ class ConfirmAppoinment extends Component {
     render() {
         return (
             <div>
-                
+                <h1>appointment</h1>
             </div>
         );
     }
 }
 
-export default ConfirmAppoinment;
+export default BookAnAppointment;
