@@ -6,7 +6,10 @@ class Profile extends Component {
     this.state = {};
   }
   render() {
-    return <div></div>;
+    return
+     <div>
+
+    </div>;
   }
 }
 

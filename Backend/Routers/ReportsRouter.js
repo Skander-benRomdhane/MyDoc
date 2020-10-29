@@ -1,44 +1,46 @@
 const express = require('express');
 const router = express.Router();
-const Messages = require('../Models/MessageSchema.js');
+const Reports = require('../models/Reportschema.js');
 
 const verify = require('./Verification.js')
 
 
+
 router.get('/',verify, async (req, res) => {
-    await Messages.findAll().then((messages) => res.json(messages))
+    await Reports.findAll().then((reports) => res.json(reports))
     .catch((err) => console.log(err))
 })
 
 router.get('/:id',verify, async (req, res) => {
-    await Messages.findByPk( req.params.id).then((messages) => res.json(messages))
+    await Reports.findByPk( req.params.id).then((reports) => res.json(reports))
     .catch((err) => console.log(err))
 })
 
 router.post('/register', async (req, res) => {
-    await Messages.create({
-        senderId: req.body.senderId,
-        receiverId: req.body.receiverId,
-        text : req.body.text
+    await Reports.create({
+        patientId: req.body.patientId,
+        doctorId: req.body.doctorId,
+        check : req.body.check,
+        price: req.body.price,
      })
         .then((user) => res.json(user))
         .catch((err) => console.log(err))
 })
 
 router.put('/:id',verify, async (req, res) => {
-    Messages.findByPk(req.params.id).then((messages) => {
-        messages.update({
+    Reports.findByPk(req.params.id).then((reports) => {
+        Reports.update({
 
-        }).then((messages) => {
-            res.json(messages);
+        }).then((reports) => {
+            res.json(reports);
         });
     })
     .catch((err) => console.log(err))
 })
 
 router.delete('/:id',verify, async (req, res) => {
-    await Messages.findByPk(req.params.id).then((messages) => {
-        messages.destroy();
+    await Reports.findByPk(req.params.id).then((reports) => {
+        reports.destroy();
     }).then(() => {
         res.json("deleted");
     })
@@ -46,7 +48,7 @@ router.delete('/:id',verify, async (req, res) => {
 });
 
 router.delete('/', verify,async (req, res) => {
-    await Messages.destroy({where:{},truncate : true}).then(() => res.json("cleared"))
+    await Reports.destroy({where:{},truncate : true}).then(() => res.json("cleared"))
     .catch((err) => console.log(err))
 });
 

@@ -10,7 +10,7 @@ class BookAnAppointment extends Component {
     render() {
         return (
             <div>
-                <h1>appointment</h1>
+                
             </div>
         );
     }

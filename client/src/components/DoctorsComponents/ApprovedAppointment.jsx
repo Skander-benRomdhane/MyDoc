@@ -6,7 +6,7 @@ class ApprovedAppointment extends Component {
         this.state = {
             
         }
-    }
+    }                                                                                                                                                                                                                                           
     render() {
         return (
             <div>

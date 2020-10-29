@@ -2,7 +2,7 @@ const { Model, Sequelize } = require('sequelize');
 const sequelize = require('../database/index.js')
 class Reports extends Model {}
 Reports.init({
-  patienId:Sequelize.STRING,
+  patientId:Sequelize.STRING,
   name: Sequelize.STRING,
   email: Sequelize.STRING,
   address : Sequelize.STRING ,

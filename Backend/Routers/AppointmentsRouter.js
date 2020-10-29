@@ -1,44 +1,47 @@
 const express = require('express');
 const router = express.Router();
-const Messages = require('../Models/MessageSchema.js');
+
+const Appointments = require('../models/AppointmentSchema.js');
 
 const verify = require('./Verification.js')
 
 
+
 router.get('/',verify, async (req, res) => {
-    await Messages.findAll().then((messages) => res.json(messages))
+    await Appointments.findAll().then((appointments) => res.json(appointments))
     .catch((err) => console.log(err))
 })
 
 router.get('/:id',verify, async (req, res) => {
-    await Messages.findByPk( req.params.id).then((messages) => res.json(messages))
+    await Appointments.findByPk( req.params.id).then((appointments) => res.json(appointments))
     .catch((err) => console.log(err))
 })
 
 router.post('/register', async (req, res) => {
-    await Messages.create({
-        senderId: req.body.senderId,
-        receiverId: req.body.receiverId,
-        text : req.body.text
+    await Appointments.create({
+        patientId: req.body.patientId,
+        doctorId: req.body.doctorId,
+        check : req.body.check,
+        price: req.body.price,
      })
         .then((user) => res.json(user))
         .catch((err) => console.log(err))
 })
 
 router.put('/:id',verify, async (req, res) => {
-    Messages.findByPk(req.params.id).then((messages) => {
-        messages.update({
+    Appointments.findByPk(req.params.id).then((appointments) => {
+        appointments.update({
 
-        }).then((messages) => {
-            res.json(messages);
+        }).then((appointments) => {
+            res.json(appointments);
         });
     })
     .catch((err) => console.log(err))
 })
 
 router.delete('/:id',verify, async (req, res) => {
-    await Messages.findByPk(req.params.id).then((messages) => {
-        messages.destroy();
+    await Appointments.findByPk(req.params.id).then((appointments) => {
+        appointments.destroy();
     }).then(() => {
         res.json("deleted");
     })
@@ -46,7 +49,7 @@ router.delete('/:id',verify, async (req, res) => {
 });
 
 router.delete('/', verify,async (req, res) => {
-    await Messages.destroy({where:{},truncate : true}).then(() => res.json("cleared"))
+    await Appointments.destroy({where:{},truncate : true}).then(() => res.json("cleared"))
     .catch((err) => console.log(err))
 });
 

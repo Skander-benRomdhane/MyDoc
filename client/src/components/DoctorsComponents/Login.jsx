@@ -24,7 +24,9 @@ class Login extends Component {
   changeView(e) {
     this.setState({ view: e.target.value });
   }
+   
 
+  
   render() {
     if (this.state.view === "main") {
       return (
