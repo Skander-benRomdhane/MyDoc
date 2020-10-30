@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Profile from "./Profile.jsx"
 import axios from "axios";
 
 class SignIn extends Component {
@@ -12,7 +13,7 @@ class SignIn extends Component {
       city : "",
       phoneNumber : "" ,
       accountBanc: "",
-      views : "" 
+      view : "" 
     };
     this.addPatient = this.addPatient.bind(this);
   }
@@ -25,7 +26,7 @@ class SignIn extends Component {
       city : "",
       phoneNumber : "" ,
       accountBanc: "",
-      views : "" 
+      view: "signin" 
     })
   }
 
@@ -42,11 +43,13 @@ class SignIn extends Component {
       accountBanc: this.state.accountBanc
     };
     axios.post("http://localhost:3000/patients/register", newPatient) 
-      .then(() => this.componentDidMount());
+      .then(() =>  this.componentDidMount());
   }
   
   render() {
-   
+    if(this.state.view==="profile"){
+      return <Profile profileInfo={this.state}/>
+    }else{
       return (
         <div>
           <center>
@@ -58,12 +61,14 @@ class SignIn extends Component {
            <input type="text" placeholder="city" onChange={(e)=>this.setState({city: e.target.value})} value={this.state.city}/><br></br>
            <input type="text" placeholder="phoneNumber" onChange={(e)=>this.setState({phoneNumber: e.target.value})} value={this.state.phoneNumber}/><br></br>  
            <input type="text" placeholder="accountBanc" onChange={(e)=>this.setState({accountBanc: e.target.value})} value={this.state.accountBanc}/><br></br>
-           <input type="submit" value="SignIn" onChange={(e)=>this.setState({view:this.state.view = "signin"})} />
+           <input type="submit" value="SignIn" onClick={()=>this.setState({view:"profile"})} />
             </form>
           </center>
         </div>
-      );
+      )
     
+    }
+     
   }
 }
 export default SignIn;

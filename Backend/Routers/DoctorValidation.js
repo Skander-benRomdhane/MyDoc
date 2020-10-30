@@ -11,7 +11,6 @@ const registerDocValidation = data =>{
         category :joi.string().required(),
         cabineName :joi.string().required(),
         urlCertificate :joi.string().required(),
-        Patients : joi.number().required(),
         accountBanc: joi.string().required(),
         price: joi.number().required(), 
     

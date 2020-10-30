@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Login from "./Login.jsx";
-import SignIn from "./signIn.jsx";
+import Sign from "./Sign.jsx";
 
 class DoctorHome extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class DoctorHome extends Component {
     } else if (this.state.view === "login") {
       return <Login />;
     } else if (this.state.view === "SignIn") {
-      return <SignIn />;
+      return <Sign/>;
     }
   }
 }
