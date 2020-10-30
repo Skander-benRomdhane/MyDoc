@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Profile from "./Profile.jsx";
+import NavBar from "./NavBar.jsx";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -61,7 +61,7 @@ class Login extends Component {
     } else if (value !== 0 ) {
       return (
         <div>
-      <Profile userId={value}/>
+      <NavBar userId={value}/>
       </div>
       )
     }

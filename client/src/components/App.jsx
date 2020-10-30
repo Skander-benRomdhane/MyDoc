@@ -10,7 +10,7 @@ class App extends React.Component {
     };
     this.changeView = this.changeView.bind(this);
   }
-  
+
   changeView(e) {
     this.setState({ view: e.target.value });
   }

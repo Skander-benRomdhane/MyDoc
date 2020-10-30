@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import DoctorHome from "./DoctorHome.jsx";
-import Profile from "./Profile.jsx"
+import NavBar from "./NavBar.jsx";
 import axios from "axios";
 
 class Sign extends Component {
@@ -101,7 +100,7 @@ class Sign extends Component {
    }else if(this.state.userId !== 0){
      return (
        <div>
-         <Profile userId={this.state.userId}/>
+         <NavBar userId={this.state.userId}/>
          
        </div>
      )

@@ -12,9 +12,13 @@ dotenv.config();
 
 const { registerDocValidation, loginDocValidation } = require('./DoctorValidation.js')
 
+<<<<<<< HEAD
 
 router.get('/', async (req, res) => {
   console.log(req.body);
+=======
+router.get('/',verify, async (req, res) => {
+>>>>>>> 8e066f8707678d3652ea72ce166bd15ca2948387
 
     await Doctors.findAll().then((doctors) => res.json(doctors))
         .catch((err) => console.log(err))
@@ -25,6 +29,19 @@ router.get('/:id',verify, async (req, res) => {
     .catch((err) => console.log(err))
 
 })
+router.post("/docstate",async(req,res)=>{
+  const doctorType= await Doctors.findAll({where: { category :req.body.docType ,city:req.body.city } })
+  const target=doctorType
+  if(!target) return res.status(400).send("No doctor found")
+  if(target) return res.status(200).json(target)
+});
+
+router.post("/doctypes",async(req,res)=>{
+  const doctorType= await Doctors.findAll({where: { category :req.body.docType } })
+  const target=doctorType
+  if(!target) return res.status(400).send("no such catgeroy")
+  if(target) return res.status(200).json(target)
+});
 
 router.post('/register', async (req, res) => {
     const { error } = registerDocValidation(req.body)

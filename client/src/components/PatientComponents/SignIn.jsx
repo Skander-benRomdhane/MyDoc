@@ -13,23 +13,16 @@ class SignIn extends Component {
       city : "",
       phoneNumber : "" ,
       accountBanc: "",
-      view : "" 
+      view : "signin" 
     };
     this.addPatient = this.addPatient.bind(this);
   }
-  componentDidMount() {
-    this.setState({ 
-      name: "",
-      password: "" ,
-      email: "",
-      address : "" ,
-      city : "",
-      phoneNumber : "" ,
-      accountBanc: "",
-      view: "signin" 
-    })
-  }
-
+  
+handleChnage(){
+  this.setState({
+    view:"profile"
+  })
+}
   
   addPatient(e) {
     e.preventDefault();
@@ -40,15 +33,16 @@ class SignIn extends Component {
       address : this.state.address ,
       city : this.state.city,
       phoneNumber : this.state.phoneNumber ,
-      accountBanc: this.state.accountBanc
+      accountBanc: this.state.accountBanc,
+      
     };
     axios.post("http://localhost:3000/patients/register", newPatient) 
-      .then(() =>  this.componentDidMount());
+      .then(() => this.handleChnage());
   }
   
   render() {
-    if(this.state.view==="profile"){
-      return <Profile profileInfo={this.state}/>
+    if(this.state.view==="profile" && (this.state.name.length)  && (this.state.password.length)  && (this.state.address.length) && (this.state.city.length) ){
+      return <Profile name={this.state.name} email={this.state.email} address={this.state.address } city={this.state.city} phoneNumber={this.state.phoneNumber} />
     }else{
       return (
         <div>
@@ -61,7 +55,7 @@ class SignIn extends Component {
            <input type="text" placeholder="city" onChange={(e)=>this.setState({city: e.target.value})} value={this.state.city}/><br></br>
            <input type="text" placeholder="phoneNumber" onChange={(e)=>this.setState({phoneNumber: e.target.value})} value={this.state.phoneNumber}/><br></br>  
            <input type="text" placeholder="accountBanc" onChange={(e)=>this.setState({accountBanc: e.target.value})} value={this.state.accountBanc}/><br></br>
-           <input type="submit" value="SignIn" onClick={()=>this.setState({view:"profile"})} />
+           <input type="submit" value="SignIn" onChange/>
             </form>
           </center>
         </div>
